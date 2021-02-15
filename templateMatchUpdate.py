@@ -9,13 +9,13 @@ best_match=[]
 for i in range(0, match.shape[0]-1):
     for j in range(0, match.shape[1]-1):
         if match[i][j]>0.49:
-            best_match.append((i,j))
+            best_match.append((j,i))
 
 print(best_match)
 weight, height = temp.shape[::-1]
 
 for start in best_match:
-    cv2.rectangle(src, (start[1], start[0]), (start[1]+weight, start[0]+height), (29, 8, 1), 1)
+    cv2.rectangle(src, start, (start[0]+weight, start[1]+height), (29, 8, 1), 1)
 
 cv2.imshow('Source picture', src)
 cv2.waitKey()
